@@ -21,7 +21,24 @@ struct NewsCardComponent: View {
             LinearGradient(colors: [Color.clear, Color.black.opacity(0.7)],
                            startPoint: .top, endPoint: .bottom)
             
-            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(article.title)
+                    .font(.title3)
+                    .foregroundColor(.white)
+                    .bold()
+                    .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                    .padding(.horizontal, 16)
+                
+                Text(article.description ?? "")
+                    .font(.caption2)
+                    .foregroundColor(.white)
+                    .bold()
+                    .lineLimit(1)
+                    .truncationMode(/*@START_MENU_TOKEN@*/.tail/*@END_MENU_TOKEN@*/)
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 4)
+                
+            }
             
         }
         .padding(4)
