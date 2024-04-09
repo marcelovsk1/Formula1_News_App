@@ -6,13 +6,33 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct NewsCardComponent: View {
+    var article: NewsResponse.Article
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(alignment: .bottomLeading) {
+            KFImage(URL(string: article.urlToImage ?? ""))
+                .resizable()
+                .scaledToFill()
+                .frame(maxWidth: .infinity, maxHeight: 230)
+            
+            LinearGradient(colors: [Color.clear, Color.black.opacity(0.7)],
+                           startPoint: .top, endPoint: .bottom)
+            
+            
+            
+        }
+        .padding(4)
+        .frame(maxWidth: .infinity, maxHeight: 230, alignment: .leading)
+        .cornerRadius(8)
+        .shadow(radius: 4)
     }
 }
 
-#Preview {
-    NewsCardComponent()
+struct NewsCardComponent_Previews: PreviewProvider {
+    static var previews: some View {
+        NewsCardComponent(article: NewsResponse.Article(title: "", url: ""))
+    }
 }

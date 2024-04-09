@@ -62,3 +62,21 @@ struct DriversResponse: Decodable {
 struct RaceResultsResponse: Decodable {
     var RaceResults: String
 }
+
+struct NewsResponse: Decodable {
+    var status: String
+    var totalResults: Int
+    var articles: [Article]
+    
+    struct Article: Decodable, Identifiable {
+        var title: String
+        var description: String?
+        var url: String
+        var urlToImage: String?
+        var content: String?
+        
+        var id: String {
+            return url
+        }
+    }
+}
